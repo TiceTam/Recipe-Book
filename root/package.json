@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "description": "root folder",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
+  },
+  "author": "Nick Stuhldreher",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

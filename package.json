@@ -4,7 +4,7 @@
   "description": "root folder",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run prestart && npm run poststart",
+    "dev": "npm run poststart",
     "start" : "npm run dev",
     "prestart": "cd frontend && npm start",
     "poststart": "cd backend && npm start"

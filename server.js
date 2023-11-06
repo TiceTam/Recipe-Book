@@ -1,0 +1,16 @@
+const path = require('path');
+const port = process.env.PORT || 3001;
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const app = express();
+
+app.use(cors());
+
+app.set('port', (process.env.PORT || 3001));
+
+app.use(express.static(path.join(__dirname + "/client/build")));
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});

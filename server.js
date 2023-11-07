@@ -21,6 +21,14 @@ app.set('port', (process.env.PORT || 3001));
 
 app.use(express.static(path.join(__dirname + "/client/build")));
 
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'), function(err) {
+      if (err) {
+        return res.status(500).send(err)
+      }
+    })
+});
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });

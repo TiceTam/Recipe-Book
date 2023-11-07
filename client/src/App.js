@@ -1,12 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import HomePage from './pages/HomePage';
+
+
+const router = createBrowserRouter([
+  {path: '/', element: <LandingPage/>},
+  {path: '/home', element: <HomePage/>}
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
+    return <RouterProvider router={router}/>;
 }
 
 export default App;

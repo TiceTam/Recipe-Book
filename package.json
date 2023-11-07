@@ -4,8 +4,8 @@
   "description": "server side",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:digitalocean": "npm install && cd client && npm install && npm run build && cd ../ && node server.js"
+    "test": "echo \"Error: no test specified\"",
+    "build": "npm install && cd client && npm install && npm run build && cd ../ && node server.js"
   },
   "author": "",
   "license": "ISC",

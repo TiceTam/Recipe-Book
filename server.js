@@ -36,7 +36,9 @@ app.get('/*', function(req, res) {
 app.post('/api/login', async (req, res) =>{
     const {username, password} = req.body;
     
+    
     const user = await User.findOne({ username });
+
     if (!user) 
     {
         return res.status(404).json({ error: 'User not found' });
@@ -44,7 +46,8 @@ app.post('/api/login', async (req, res) =>{
 
     else
     {
-        if(user.password != password){
+        const passwordsMatch = await bcrypt.compare(password, user.password);
+        if(!passwordsMatch){
             return res.status(404).json({error: 'Password Invalid'});
         }
         else{
@@ -58,11 +61,31 @@ app.post('/api/login', async (req, res) =>{
 app.post('/api/signup', async (req, res)=>{
     const {username, password, email} = req.body;
 
+    const existingUser = await User.findOne({username});
+
+    if(existingUser){
+        return res.status(404).json({error: "User Already Exists"});
+    }
+
+    //generate hashed password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    //Generate verification code
+    const min = 100000;
+    const max = 999999;
+    const code = Math.floor((Math.random() * (max - min + 1))) + min;
+
     const user = new User({
         username,
-        password,
         email,
+        password: hashedPassword,
+        verifyCode: code
     });
+
+    //save the user to the database.
+    await user.save();
+
+    return res.status(200).json({mess: "Successfully Registered"});
 
 });
 

@@ -28,11 +28,6 @@ const userObject = new mongoose.Schema({
         type: Number
     },
 
-   userID: {
-        type: Number,
-        unique: true,
-        
-    }
 
 });
 

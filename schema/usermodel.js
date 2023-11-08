@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 
-const userObject = new mongoose.Schema({ // reference as const User = require('./usermodel'); in main files I think.
+const userObject = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -12,7 +12,6 @@ const userObject = new mongoose.Schema({ // reference as const User = require('.
     password: {
         type: String,
         required: true,
-        unique: true
     },
 
     isConfirmed: {
@@ -29,21 +28,12 @@ const userObject = new mongoose.Schema({ // reference as const User = require('.
         type: Number
     },
 
-   UserID: {
+   userID: {
         type: Number,
         unique: true,
         
-    },
-
-    profilePicture: {
-        type: String,
-        default: "/images/profilePicturePlaceHolder.png",
-    },    
-    name: {
-        type: String,
-        required: true,
-    },
+    }
 
 });
 
-module.exports = mongoose.model('user', userObject);
+module.exports = mongoose.model('users', userObject);

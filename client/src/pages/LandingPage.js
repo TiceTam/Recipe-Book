@@ -4,9 +4,14 @@ import {Link} from 'react-router-dom';
 function LandingPage() {
 
   return (
-        <div>
-            <h1>Landing Page</h1>
-        </div>
+    <div>
+      <div className="ttContainer">
+        <span className="titleText">Fifteen Recipes</span>
+      </div>
+        <div className='lrContainer'>
+          <Link to="/login" className='lrButton'>Login / Register</Link>
+          </div>
+    </div>
   );
 }
 

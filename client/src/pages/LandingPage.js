@@ -9,7 +9,7 @@ function LandingPage() {
         <span className="titleText">Fifteen Recipes</span>
       </div>
         <div className='lrContainer'>
-          <Link to="/login" className='lrButton'>Login / Register</Link>
+          <Link to="/login" className='lrButton'>Login/Register</Link>
           </div>
     </div>
   );

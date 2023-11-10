@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 body{
   background-color: #dd4444;
@@ -11,9 +12,8 @@ body{
 }
 
 .titleText {
-  text-transform: uppercase;
-  font-family: verdana;
-  font-size: 100px;
+  font-family: 'VT323', monospace;
+  font-size: 120px;
   font-weight: 700;
   color: #f5f5f5;
   text-shadow: 1px 1px 1px #919191,
@@ -40,9 +40,8 @@ body{
 
 .lrButton {
   text-decoration: none;
-  text-transform: uppercase;
-  font-family: verdana;
-  font-size: 20px;
+  font-family: 'VT323', monospace;
+  font-size: 40px;
   font-weight: 700;
   color: #f5f5f5;
   text-shadow: 1px 1px 1px #919191,
@@ -54,4 +53,16 @@ body{
   1px 14px 10px rgba(16,16,16,0.2),
   1px 18px 35px rgba(16,16,16,0.2),
   1px 22px 60px rgba(16,16,16,0.4);
+}
+
+.lrContainer:hover {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+}
+
+.lrContainer:active {
+  position: absolute;
+  top: 17px;
+  right: 15px;
 }

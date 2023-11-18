@@ -110,19 +110,48 @@ app.post('/api/addrecipe', async (req, res)=>{
 
 //TODO: Search Recipes
 app.post('/api/searchrecipes', async(req, res)=>{
+    const {recipeName} = req.body;
 
+    const results = await Recipe.find({recipeName: {$regex: recipeName, $options: 'i'}});
+
+    if(results){
+        console.log('recipes found: ');
+        console.log(results);
+        return res.status(200).json({error: '', recipes: results});
+      } else{
+        console.log('recipes not found');
+        return res.status(404).json({error: 'recipes not found'})
+      }
 });
 
 //TODO: Load Recipes
 app.post('/api/loadrecipes', async(req, res)=>{
-
+    const results = await Recipe.find({});
+    console.log('recipes:');
+    console.log(results);
+    return res.status(200).json({recipes: results});
 });
 
 //TODO: Add recipe to Likes
-app.post('/api/addrecipelikes', async(req, res)=>{
+/*app.post('/api/addrecipelikes', async(req, res)=>{
+    const {userID, recipeID} = req.body;
 
+    const user = await User.find({_id: userID});
+    likes = user.likes;
+    
+    for(let i = 0; i < likes.length; i++){
+        if(likes[i] == recipeID){
+
+        }
+    }
+
+    await User.updateOne(
+        { _id: userID },
+        { $push: { likes: recipeID } }
+    );
+    return res.status(200).json({mess: "Successfully added to likes"});
 });
-
+*/
 
 //TODO: Search through users likes
 app.post('/api/searchlikes', async(req,res)=>{

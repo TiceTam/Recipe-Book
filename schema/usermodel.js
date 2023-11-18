@@ -1,7 +1,6 @@
 // user model
 const mongoose = require('mongoose');
 
-
 const userObject = new mongoose.Schema({
     username: {
         type: String,
@@ -27,6 +26,8 @@ const userObject = new mongoose.Schema({
     verifyCode: {
         type: Number
     },
+
+    likes: [mongoose.Types.ObjectId]
 
 
 });

@@ -58,6 +58,18 @@ body{
   color: rgb(57, 57, 57);
 }
 
+.gsWrapper {
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  height: 113vh;
+}
+
+.gsButton {
+  font-family: "Ubuntu";
+  font-weight: 500;
+}
+
 .dish1 {
   position: absolute;
   width: 500px;

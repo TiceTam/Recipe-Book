@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&display=swap');
+
+body{
+  background-color:rgb(232, 225, 225);
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 251, 251);
+}
+
+.navBrand {
+  font-family: "Agbalumo";
+  font-size: 35px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+.home{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.recipes{
+  margin-right: 40px;
+}
+
+.nav-link{
+  font-family: "Ubuntu";
+  font-weight: 500;
+}

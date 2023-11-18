@@ -8,7 +8,6 @@ import CreateRecipe from './pages/CreateRecipe.js';
 import LoginPage from './pages/LoginPage.js';
 import SignupPage from './pages/SignupPage.js';
 
-
 const router = createBrowserRouter([
   {path: '/', element: <LandingPage/>},
   {path: '/user', element: <UserPage/>},

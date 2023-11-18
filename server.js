@@ -133,17 +133,8 @@ app.post('/api/loadrecipes', async(req, res)=>{
 });
 
 //TODO: Add recipe to Likes
-/*app.post('/api/addrecipelikes', async(req, res)=>{
+app.post('/api/addrecipelikes', async(req, res)=>{
     const {userID, recipeID} = req.body;
-
-    const user = await User.find({_id: userID});
-    likes = user.likes;
-    
-    for(let i = 0; i < likes.length; i++){
-        if(likes[i] == recipeID){
-
-        }
-    }
 
     await User.updateOne(
         { _id: userID },
@@ -151,7 +142,7 @@ app.post('/api/loadrecipes', async(req, res)=>{
     );
     return res.status(200).json({mess: "Successfully added to likes"});
 });
-*/
+
 
 //TODO: Search through users likes
 app.post('/api/searchlikes', async(req,res)=>{

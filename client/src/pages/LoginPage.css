@@ -1,0 +1,77 @@
+.loginDiv h1{
+    font-size: 4vw;
+    font-family: "Barlow Semi Condensed";
+    font-weight: bolder;
+    color: rgb(132,37,30);
+    text-align: center; 
+    padding-bottom: 10%;
+}
+
+.loginDiv a{
+    text-decoration: none;
+    font-family: 'Barlow Semi Condensed';
+    font-weight: medium;
+    font-size: 1.5vw;
+    color: rgb(237, 154, 65); 
+}
+
+.loginDiv text{
+    font-family: 'Barlow Semi Condensed';
+    color: #4F5E30;
+    text-align: center;
+    margin-left: 10%;
+    font-weight: medium;
+    font-size: 1.5vw;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    left: 5%;
+    top: 10%;
+}
+
+.loginDiv input{
+    font-family: 'Barlow Semi Condensed';
+    font-size: 1.75vw;
+    font-weight: medium;
+    border: none;
+    outline: none;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    text-align: center;
+    color: #797979;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.loginDiv input[type=submit] {
+    font-family: 'Barlow Semi Condensed';
+    font-size: 1.75vw;
+    font-weight: 500px;
+    width: 105%;
+    border: none;
+    cursor: pointer;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(236,164,87) ;
+    border-radius: 20px;
+    color: white;
+}
+
+.form{
+    float: left;
+    padding-left: 20%;
+    padding-top: 30%;
+    position: relative;
+}
+
+.animation h1{
+    width: 50%;
+    margin-left: 45%;
+    margin-bottom: 45%;
+}
+

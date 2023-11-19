@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
 
 body{
   background-color:rgb(232, 225, 225);
@@ -30,7 +30,7 @@ body{
 }
 
 .nav-link{
-  font-family: "Ubuntu";
+  font-family: "Roboto";
   font-weight: 500;
 }
 
@@ -43,7 +43,7 @@ body{
 }
 
 .lpText {
-  font-family: "Ubuntu";
+  font-family: "Roboto";
   font-weight: 700;
   font-size: 80px;
   text-align: center;
@@ -51,7 +51,7 @@ body{
 }
 
 .bottomText{
-  font-family: "Ubuntu";
+  font-family: "Roboto";
   font-weight: 500;
   font-size: 23px;
   text-align: center;
@@ -66,7 +66,7 @@ body{
 }
 
 .gsButton {
-  font-family: "Ubuntu";
+  font-family: "Roboto";
   font-weight: 500;
 }
 

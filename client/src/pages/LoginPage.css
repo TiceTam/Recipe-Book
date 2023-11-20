@@ -7,7 +7,7 @@
     padding-bottom: 10%;
 }
 
-.loginDiv a{
+.signup a{
     text-decoration: none;
     font-family: 'Barlow Semi Condensed';
     font-weight: medium;
@@ -22,16 +22,6 @@
     margin-left: 10%;
     font-weight: medium;
     font-size: 1.5vw;
-}
-
-.loginForm{
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    width: 40%;
-    height: 80%;
-    left: 5%;
-    top: 10%;
 }
 
 .loginDiv input{
@@ -62,6 +52,16 @@
     color: white;
 }
 
+.loginForm{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    left: 5%;
+    top: 10%;
+}
+
 .form{
     float: left;
     padding-left: 20%;
@@ -69,7 +69,7 @@
     position: relative;
 }
 
-.animation h1{
+.loginAnimation h1{
     width: 50%;
     margin-left: 45%;
     margin-bottom: 45%;

@@ -43,11 +43,14 @@ function LoginPage(){
                     <br/><br/>
                     <input type="submit" value="login"/>
                     <br/><br/>
-                    <text>Not registered? </text><a href="/signup">Sign Up</a>
+
+                    <div className="signup">
+                        <text>Not registered? </text><a href="/signup">Sign Up</a>
+                    </div>
                 </form>
             </div>
 
-            <div className="animation">
+            <div className="loginAnimation">
                 <h1>
                 <Lottie animationData = {cooking}/>
                 </h1>

@@ -4,7 +4,6 @@
 
 body{
   background-color:rgb(232, 225, 225);
-  overflow: hidden;
 }
 
 .navbar {
@@ -36,7 +35,7 @@ body{
 
 .topText {
   padding-left: 200px;
-  padding-top: 100px;
+  padding-top: 200px;
 }
 
 .bigText {
@@ -67,6 +66,7 @@ body{
 .lrTextWrap {
   padding-left: 200px;
   padding-top: 300px;
+  margin-bottom: 50px;
 }
 
 .lrText {

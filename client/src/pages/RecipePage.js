@@ -4,8 +4,23 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import dish4 from '../images/dish4.png'
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import displayDish1 from '../images/displayDish1.jpeg'
 
 function RecipePage(){
+
+    const latestRecipes = [
+        { title: 'Cheese Pizza', content: 'This is the content of Recipe 1.', imageSrc: '../images/displayDish1.jpeg'},
+        { title: 'Alfredo Pasta', content: 'This is the content of Recipe 2.', imageSrc: '../images/displayDish1.jpeg'},
+        { title: 'Chocolate Cake', content: 'This is the content of Recipe 3.', imageSrc: '../images/displayDish1.jpeg'},
+        { title: 'Poke Bowl', content: 'This is the content of Recipe 4.', imageSrc: '../images/displayDish1.jpeg'},
+        { title: 'Fried Chicken', content: 'This is the content of Recipe 5.', imageSrc: '../images/displayDish1.jpeg'},
+      ];
+
+    
     return(
         <div>
             <Navbar expand="lg" className="navbar">
@@ -36,6 +51,22 @@ function RecipePage(){
             <div className='lrTextWrap'>
                 <h2 className='lrText'>Latest Recipes</h2>
             </div>
+            <Container>
+                <Row xs={2} md={3} lg={5} className="g-4">
+                {latestRecipes.map((recipe, index) => (
+                    <Col key={index} className='d-flex'>
+                    <Card className='flex-fill'>
+                        <Card.Img variant="top" src={displayDish1}/>
+                        <Card.Body>
+                            <Card.Title>{recipe.title}</Card.Title>
+                            <Card.Text>{recipe.content}</Card.Text>
+                            <Button variant="dark">View Recipe</Button>
+                        </Card.Body>
+                    </Card>
+                    </Col>
+                ))}
+                </Row>
+            </Container>
         </div>
     );
 }

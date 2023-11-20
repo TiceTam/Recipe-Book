@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const User = require('./schema/usermodel');
 const Recipe = require('./schema/recipemodel');
+const Like = require('./schema/likemodel');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const app = express();
@@ -135,24 +136,71 @@ app.post('/api/loadrecipes', async(req, res)=>{
 //TODO: Add recipe to Likes
 app.post('/api/addrecipelikes', async(req, res)=>{
     const {userID, recipeID} = req.body;
+    const existingLike = await Like.findOne({recipeID: recipeID, userID: userID});
+    if(existingLike){
+        return res.status(200).json({err: "like already exists."});
+    }
+    const like = new Like({
+        recipeID,
+        userID
+    });
+    
+    await like.save();
 
-    await User.updateOne(
-        { _id: userID },
-        { $push: { likes: recipeID } }
-    );
     return res.status(200).json({mess: "Successfully added to likes"});
 });
 
 
 //TODO: Search through users likes
 app.post('/api/searchlikes', async(req,res)=>{
+    const {userID, recipeName} = req.body;
+    const likes = await Like.find({userID: userID});
+    let recipes = [];
+    let results = [];
+    let recipeNames = [];
+    let i = 0;
+    console.log(likes);
+    for(const like of likes){
+        let recipeID = like.recipeID;
+        console.log(recipeID);
+        recipes[i] = await Recipe.find({_id: recipeID});
+        recipeNames.push(recipes[i].recipeName);
+        i += 1;
+    }
+    console.log(recipeNames);
+    recipeNames.filter((el) => el.toLowerCase().includes(recipeName.toLowerCase()));
+    console.log(recipeNames);
+
+    for(let i = 0; i< recipeNames.length; i++){
+        for(let j = 0; j < recipes.length; j++){
+            if(recipeNames[i].toLowerCase() == recipes[j].recipeName.toLowerCase()){
+                results.push(recipes[j]);
+            }
+        }
+    }
+
+    return res.status(200).json({recipes: results});
 
 });
 
 
 //TODO: Load users likes
 app.post('/api/loadlikes', async (req, res)=>{
+    const {userID} = req.body;
+    const likes = await Like.find({userID: userID});
+    let recipes = [];
+    let i = 0;
+    console.log(likes);
+    for(const like of likes){
+        let recipeID = like.recipeID;
+        console.log(recipeID);
+        recipes[i] = await Recipe.find({_id: recipeID});
+        i += 1;
+    }
 
+    return res.status(200).json({recipes: recipes});
+    
+    
 });
 
 app.listen(port, () => {

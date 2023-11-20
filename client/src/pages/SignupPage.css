@@ -1,0 +1,77 @@
+.signupDiv h1{
+    font-size: 4vw;
+    font-family: "Barlow Semi Condensed";
+    font-weight: bolder;
+    color: rgb(132,37,30);
+    text-align: center; 
+    padding-bottom: 10%;
+    padding-top: 0%;
+}
+
+.login a{
+    text-decoration: none;
+    font-family: 'Barlow Semi Condensed';
+    font-weight: medium;
+    font-size: 1.5vw;
+    color: #ECA457;  
+}
+
+.signupDiv text{
+    font-family: 'Barlow Semi Condensed';
+    color: #4F5E30;
+    text-align: center;
+    margin-left: 10%;
+    font-weight: medium;
+    font-size: 1.5vw;
+}
+
+.signupDiv input{
+    font-family: 'Barlow Semi Condensed';
+    font-size: 1.75vw;
+    font-weight: medium;
+    border: none;
+    outline: none;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    text-align: center;
+    color: #797979;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.signupDiv input[type=submit]{
+    font-family: 'Barlow Semi Condensed';
+    font-size: 1.75vw;
+    font-weight: 500px;
+    width: 105%;
+    border: none;
+    cursor: pointer;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(236,164,87);
+    border-radius: 20px;
+    color: white;
+}
+
+.signupForm{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    left: 50%;
+    top: 6%;
+}
+
+.form{
+    float: left;
+    padding-left: 20%;
+    padding-top: 30%;
+    position: relative;
+}
+
+.signupAnimation h1{
+    width: 45%;
+    margin-left: 4%;
+    margin-top: 5%;
+}

@@ -114,7 +114,7 @@ export default class SignupPage extends Component{
 							<br></br>
 							<p id="errorMessage"></p>
 
-							<input type="submit" value="sign up"/>
+							<input type="submit" value="Sign Up"/>
 							<br/><br/>
 							
 							<div className="login">

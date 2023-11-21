@@ -10,7 +10,7 @@ import dish3 from '../images/dish3.png'
 
 function LandingPage() {
   return (
-    <div>
+    <div className='lpBody'>
       <Navbar expand="lg" className="navbar">
         <Container >
           <Navbar.Brand className='navBrand'>
@@ -26,17 +26,26 @@ function LandingPage() {
         </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className='lp'>
-        <h1 className='lpText'>All-in-one place for delicious recipes</h1>
-        <p className='bottomText'>The ultimate guide to easy recipes & inspiration</p>
-      </div>
-      <div className='gsWrapper'>
-        <Button variant="dark" className='gsButton' as={Link} to="/login">Get started</Button>
-      </div>
-      <div>
-        <img src={dish1} alt="dish1" className='dish1'></img>
-        <img src={dish2} alt="dish2" className='dish2'></img>
-        <img src={dish3} alt="dish3" className='dish3'></img>
+      <div className='lpBody'>
+        <div className='lp'>
+          <h1 className='lpText'>All-in-one place for delicious recipes</h1>
+          <p className='bottomText'>The ultimate guide to easy recipes & inspiration</p>
+          <Button variant="dark" className='gsButton' as={Link} to="/login">Get started</Button>
+        </div>
+        {/*
+          <div className='gsWrapper'>
+                    {<Button variant="dark" className='gsButton' as={Link} to="/login">Get started</Button>}
+          </div>
+        */}
+        
+        { 
+        <div>
+          {/*<img src={dish1} alt="dish1" className='dish1'></img>
+          <img src={dish2} alt="dish2" className='dish2'></img>
+          <img src={dish3} alt="dish3" className='dish3'></img>*/}
+        </div>
+        }
+        
       </div>
     </div>
   );

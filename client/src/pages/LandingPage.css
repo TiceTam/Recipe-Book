@@ -4,7 +4,11 @@
 
 body{
   background-color:rgb(232, 225, 225);
+}
+
+.lpBody {
   overflow: hidden;
+  height: 100vh;
 }
 
 .navbar {
@@ -40,6 +44,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
+  text-align: center;
 }
 
 .lpText {
@@ -58,27 +63,33 @@ body{
   color: rgb(57, 57, 57);
 }
 
+/*
 .gsWrapper {
   align-items: center;
   justify-content: center;
   display:flex;
-  height: 113vh;
+  text-align: center;
 }
+*/
 
 .gsButton {
   font-family: "Roboto";
   font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .dish1 {
   position: absolute;
   width: 500px;
-  left: 200px;
-  top: 0px;
+  left: 0vw;
+  top: 0vh;
   height: auto;
   z-index: -1;
 }
 
+/*
 .dish2 {
   position: absolute;
   width: 650px;
@@ -96,3 +107,4 @@ body{
   top: -30px;
   z-index: -1;
 }
+*/

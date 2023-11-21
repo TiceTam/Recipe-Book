@@ -109,7 +109,7 @@ app.post('/api/addrecipe', async (req, res)=>{
 });
 
 
-//TODO: Search Recipes
+//Search Recipes
 app.post('/api/searchrecipes', async(req, res)=>{
     const {recipeName} = req.body;
 
@@ -125,7 +125,7 @@ app.post('/api/searchrecipes', async(req, res)=>{
       }
 });
 
-//TODO: Load Recipes
+//Load All Recipes
 app.post('/api/loadrecipes', async(req, res)=>{
     const results = await Recipe.find({});
     console.log('recipes:');
@@ -133,7 +133,7 @@ app.post('/api/loadrecipes', async(req, res)=>{
     return res.status(200).json({recipes: results});
 });
 
-//TODO: Add recipe to Likes
+//Add Recipe Like
 app.post('/api/addrecipelikes', async(req, res)=>{
     const {userID, recipeID} = req.body;
     const existingLike = await Like.findOne({recipeID: recipeID, userID: userID});
@@ -151,40 +151,24 @@ app.post('/api/addrecipelikes', async(req, res)=>{
 });
 
 
-//TODO: Search through users likes
+//Search Recipe likes
 app.post('/api/searchlikes', async(req,res)=>{
     const {userID, recipeName} = req.body;
     const likes = await Like.find({userID: userID});
     let recipes = [];
-    let results = [];
-    let recipeNames = [];
-    let i = 0;
-    console.log(likes);
-    for(const like of likes){
-        let recipeID = like.recipeID;
-        console.log(recipeID);
-        recipes[i] = await Recipe.find({_id: recipeID});
-        recipeNames.push(recipes[i].recipeName);
-        i += 1;
-    }
-    console.log(recipeNames);
-    recipeNames.filter((el) => el.toLowerCase().includes(recipeName.toLowerCase()));
-    console.log(recipeNames);
 
-    for(let i = 0; i< recipeNames.length; i++){
-        for(let j = 0; j < recipes.length; j++){
-            if(recipeNames[i].toLowerCase() == recipes[j].recipeName.toLowerCase()){
-                results.push(recipes[j]);
-            }
-        }
+    //get recipes for likes
+    for(let i = 0; i < likes.length; i++){
+        let recipe = await Recipe.find({_id: likes[i].recipeID, recipeName: {$regex: recipeName, $options: 'i'}});
+        recipes.push(recipe);
     }
 
-    return res.status(200).json({recipes: results});
+    return res.status(200).json({recipes: recipes});
 
 });
 
 
-//TODO: Load users likes
+//Load Recipe Likes
 app.post('/api/loadlikes', async (req, res)=>{
     const {userID} = req.body;
     const likes = await Like.find({userID: userID});
@@ -202,6 +186,13 @@ app.post('/api/loadlikes', async (req, res)=>{
     
     
 });
+
+//TODO: Delete Likes
+app.post('/api/deletelikes', async (req, res) =>{
+    
+
+});
+
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

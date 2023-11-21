@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+.loginDiv {
+    overflow: hidden;
+    height: 100vh;
+}
+
 .loginDiv h1{
     font-size: 4vw;
-    font-family: "Barlow Semi Condensed";
+    font-family: "Agbalumo";
     font-weight: bolder;
     color: rgb(132,37,30);
     text-align: center; 
@@ -9,14 +18,14 @@
 
 .signup a{
     text-decoration: none;
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Roboto';
     font-weight: medium;
     font-size: 1.5vw;
     color: rgb(237, 154, 65); 
 }
 
 .signup p{
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Roboto';
     color: #4F5E30;
     text-align: center;
     margin-left: 10%;
@@ -25,7 +34,7 @@
 }
 
 .loginDiv input{
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Roboto';
     font-size: 1.75vw;
     font-weight: medium;
     border: none;
@@ -40,7 +49,7 @@
 }
 
 .loginDiv input[type=submit] {
-    font-family: 'Barlow Semi Condensed';
+    font-family: 'Agbalumo';
     font-size: 1.75vw;
     font-weight: 500px;
     width: 105%;

@@ -30,7 +30,10 @@ function LandingPage() {
         <div className='lp'>
           <h1 className='lpText'>All-in-one place for delicious recipes</h1>
           <p className='bottomText'>The ultimate guide to easy recipes & inspiration</p>
-          <Button variant="dark" className='gsButton' as={Link} to="/login">Get started</Button>
+          <Link to="/login" className='gsButton'>
+            Get started
+          </Link>
+          {/*<button className='gsButton' as={Link} to="/login">Get started</button>*/}
         </div>
         {/*
           <div className='gsWrapper'>

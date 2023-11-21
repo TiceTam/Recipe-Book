@@ -22,6 +22,11 @@ body{
   font-size: 35px;
   margin-right: 30px;
   margin-bottom: 10px;
+  color: rgb(132,37,30);
+}
+
+.navBrand:hover {
+  color: rgb(132,37,30);
 }
 
 .home{
@@ -52,7 +57,7 @@ body{
   font-weight: 700;
   font-size: 80px;
   text-align: center;
-  color: rgb(28, 28, 28);
+  color: rgb(132,37,30);
 }
 
 .bottomText{
@@ -75,9 +80,18 @@ body{
 .gsButton {
   font-family: "Roboto";
   font-weight: 500;
+  font-size: 1.5vw;
+  width: 150%;
   align-items: center;
   justify-content: center;
   position: relative;
+  background-color: rgb(237, 154, 65);
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
 }
 
 .dish1 {

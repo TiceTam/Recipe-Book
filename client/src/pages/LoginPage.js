@@ -83,7 +83,7 @@ export default class LoginPage extends Component{
 
                 <div className="loginForm">
                     <form className="form" onSubmit={this.onSubmit}>
-                        <h1>LOGIN</h1>
+                        <h1>Login</h1>
                         <input
                             type="username"
                             name="username"
@@ -100,7 +100,7 @@ export default class LoginPage extends Component{
                         <br/><br/>
                         <p id="errorMessage"></p>
 
-                        <input type="submit" value="login"/>
+                        <input type="submit" value="Login"/>
                         <br/><br/>
 
                         <div className="signup">

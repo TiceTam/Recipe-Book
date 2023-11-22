@@ -1,13 +1,10 @@
 import './RecipePage.css';
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import {Link} from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import dish4 from '../images/dish4.png'
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import displayDish1 from '../images/displayDish1.jpeg'
 import Modal from 'react-bootstrap/Modal';
 import React, {useEffect, useState} from 'react';
@@ -84,7 +81,26 @@ function RecipePage(){
             */}
             
             <div className='lrTextWrap'>
-                <h2 className='lrText'>Latest Recipes</h2>
+                <div id="textSearth">
+                    <p className='lrText'>Latest Recipes
+                        <Container className='mt-2'>
+                            <Row>
+                                <Col sm={4}>
+                                    <Form className="d-flex">
+                                        <Form.Control
+                                            type="search"
+                                            placeholder="Search"
+                                            className="me-2 rounded-pill"
+                                            aria-label="Search"
+                                        />
+                                        <Button className='rounded-pill' variant='outline-primary'>Search</Button>
+                                    </Form>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </p>
+                </div>
+                
             </div>
 
             <Container className='lrCon'>
@@ -107,12 +123,12 @@ function RecipePage(){
                                         </Modal.Header>
 
                                         <Modal.Body>
-                                            <p>ingredient:</p>
+                                            <p className="ingredient">ingredient:</p>
                                             {ingredients.map((ingredient) => (
                                                 <p>{ingredient.ingredient}</p>
                                             ))}
 
-                                            <p>instruction:</p>
+                                            <p className="instruction">instruction:</p>
                                             {instructions.map((instruction) => (
                                                 <p>{instruction.instruction}</p>
                                             ))}

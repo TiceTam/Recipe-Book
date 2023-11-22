@@ -44,11 +44,12 @@ export default class LoginPage extends Component{
 				}
                 else if(response.status === 200){
                     json = await response.json();
-					window.location.href = "http://www.cop4331groupfifteen.xyz/user";
+                    window.location.href ="http://localhost:3000/user";
+					//window.location.href = "http://www.cop4331groupfifteen.xyz/user";
 				}
                 return json;
 			}).then(function(data){
-                localStorage.setItem("usernameID", data);
+                localStorage.setItem("usernameID", data.userID);
             });
 		} catch(error){
 			console.log(error);

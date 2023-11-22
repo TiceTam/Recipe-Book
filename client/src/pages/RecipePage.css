@@ -30,26 +30,31 @@
 }
 
 .topText {
-  padding-left: 200px;
-  padding-top: 200px;
+  padding-left: 10vw;
+  padding-top: 10vh;
 }
 
 .bigText {
-  font-family: "Roboto";
+  font-family: "Agbalumo";
   font-weight: 700;
-  font-size: 60px;
+  font-size: 5vw;
   text-align: left;
-  color: rgb(28, 28, 28);
+  color: rgb(132,37,30);
 }
 
 .smallText{
   font-family: "Roboto";
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.2vw;
   text-align: left;
   color: rgb(57, 57, 57);
 }
 
+.textPad {
+  padding-top: 2vh;
+}
+
+/*
 .dish4 {
   position: absolute;
   width: 1300px;
@@ -58,17 +63,18 @@
   height: auto;
   z-index: -1;
 }
+*/
 
 .lrTextWrap {
-  padding-left: 200px;
-  padding-top: 300px;
-  margin-bottom: 50px;
+  padding-left: 10vw;
+  padding-top: 15vh;
+  padding-bottom: 2vh;
 }
 
 .lrText {
-  font-family: "Roboto";
+  font-family: "Agbalumo";
   font-weight: 700;
-  font-size: 30px;
+  font-size: 2vw;
   text-align: left;
-  color: rgb(28, 28, 28);
+  color: rgb(132,37,30);
 }

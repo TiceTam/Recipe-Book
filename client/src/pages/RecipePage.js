@@ -19,11 +19,10 @@ function RecipePage(){
         { title: 'Poke Bowl', content: 'This is the content of Recipe 4.', imageSrc: '../images/displayDish1.jpeg'},
         { title: 'Fried Chicken', content: 'This is the content of Recipe 5.', imageSrc: '../images/displayDish1.jpeg'},
       ];
-
     
     return(
         <div>
-            <Navbar expand="lg" className="navbar">
+            <Navbar expand="lg" className="navbar" sticky='top'>
                 <Container >
                 <Navbar.Brand className='navBrand'>
                     UnderCooked
@@ -41,16 +40,22 @@ function RecipePage(){
             <div className='topText'>
                 <h2 className='bigText'>Huge selection</h2>
                 <h2 className='bigText'>of delicious recipes</h2>
-                <p className='smallText'>Explore our selection of amazing recipes ranging from: easy desserts</p>
-                <p className='smallText'>delicious vegan and vegetartian options, quick bakes, family-friendly meals,</p>
-                <p className='smallText'>and gluten-free recipes</p>
+                <div className='textPad'>
+                    <p className='smallText'>Explore our selection of amazing recipes ranging from: easy desserts</p>
+                    <p className='smallText'>delicious vegan and vegetartian options, quick bakes, family-friendly meals,</p>
+                    <p className='smallText'>and gluten-free recipes</p>
+                </div>
             </div>
+            {/*
             <div>
                 <img src={dish4} alt="dish4" className='dish4'></img>
-            </div>
+            </div> 
+            */}
+            
             <div className='lrTextWrap'>
                 <h2 className='lrText'>Latest Recipes</h2>
             </div>
+            
             <Container>
                 <Row xs={2} md={3} lg={5} className="g-4">
                 {latestRecipes.map((recipe, index) => (

@@ -187,10 +187,13 @@ app.post('/api/loadlikes', async (req, res)=>{
     
 });
 
-//TODO: Delete Likes
+//Delete Likes
 app.post('/api/deletelikes', async (req, res) =>{
-    
+    const {userID, recipeID} = req.body;
 
+    await Like.deleteOne({userID: userID, recipeID: recipeID});
+
+    return res.status(200).json({mess: "Successfully deleted like"});
 });
 
 

@@ -9,15 +9,47 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import displayDish1 from '../images/displayDish1.jpeg'
+import Modal from 'react-bootstrap/Modal';
+import React, {useEffect, useState} from 'react';
 
 function RecipePage(){
 
-    const latestRecipes = [
-        { title: 'Cheese Pizza', content: 'This is the content of Recipe 1.', imageSrc: '../images/displayDish1.jpeg'},
-        { title: 'Alfredo Pasta', content: 'This is the content of Recipe 2.', imageSrc: '../images/displayDish1.jpeg'},
-        { title: 'Chocolate Cake', content: 'This is the content of Recipe 3.', imageSrc: '../images/displayDish1.jpeg'},
-        { title: 'Poke Bowl', content: 'This is the content of Recipe 4.', imageSrc: '../images/displayDish1.jpeg'},
-      ];
+    const [recipes, setRecipes] = useState([]);
+    const [ingredients, setIngredients] = useState([]);
+    const [instructions, setInstructions] = useState([]);
+    const [openModal, setOpenModal] = useState();
+
+    const getRecipes = async () => {
+
+        const URL = "http://localhost:3001/api/loadrecipes";
+
+        try{
+            const response = await fetch(URL, {
+                method: 'POST',
+                headers: {
+                	'Content-Type': 'application/json'
+                },
+            });
+            const data = await response.json();
+            //console.log(data);
+            setRecipes(data.recipes);
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    const getIngredients = (ingredientList) => {
+        setIngredients(ingredientList);
+    }
+
+    const getInstructions = (instructionList) => {
+        setInstructions(instructionList);
+    }
+    
+
+    useEffect(() => {
+        getRecipes();
+    }, []);
     
     return(
         <div>
@@ -57,18 +89,43 @@ function RecipePage(){
 
             <Container className='lrCon'>
                 <Row xs={2} md={3} lg={4} className="g-4">
-                {latestRecipes.map((recipe, index) => (
-                    <Col key={index} className='lrCol'>
-                    <Card className='flex-fill'>
-                        <Card.Img variant="top" src={displayDish1}/>
-                        <Card.Body>
-                            <Card.Title>{recipe.title}</Card.Title>
-                            <Card.Text>{recipe.content}</Card.Text>
-                            <Button variant="dark">View Recipe</Button>
-                        </Card.Body>
-                    </Card>
-                    </Col>
-                ))}
+                    {recipes.map((recipe) => (
+                        <Col key={recipe._id} className='lrCol'>
+                        <Card className='flex-fill'>
+                            <Card.Img variant="top" src={recipe.image} alt={recipe.recipeName}/>
+                            <Card.Body>
+                                <Card.Title>{recipe.recipeName}</Card.Title>
+                                <Button variant="dark" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
+                                    <Modal
+                                        show={openModal === recipe._id}
+                                        size="lg"
+                                        aria-labelledby="contained-modal-title-vcenter"
+                                        centered>
+
+                                        <Modal.Header>
+                                            <Modal.Title id="contained-modal-title-vcenter">INGREDIENT AND INSTRUCTION</Modal.Title>
+                                        </Modal.Header>
+
+                                        <Modal.Body>
+                                            <p>ingredient:</p>
+                                            {ingredients.map((ingredient) => (
+                                                <p>{ingredient.ingredient}</p>
+                                            ))}
+
+                                            <p>instruction:</p>
+                                            {instructions.map((instruction) => (
+                                                <p>{instruction.instruction}</p>
+                                            ))}
+                                        </Modal.Body>
+
+                                        <Modal.Footer>
+                                            <Button onClick={() => setOpenModal(false)}>Close</Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                            </Card.Body>
+                        </Card>
+                        </Col>
+                    ))}
                 </Row>
             </Container>
         </div>

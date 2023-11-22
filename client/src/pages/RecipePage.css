@@ -15,6 +15,7 @@
   margin-bottom: 10px;
 }
 
+/*
 .home{
   margin-left: 40px;
   margin-right: 40px;
@@ -23,6 +24,7 @@
 .recipes{
   margin-right: 40px;
 }
+*/
 
 .nav-link{
   font-family: "Roboto";
@@ -77,4 +79,13 @@
   font-size: 2vw;
   text-align: left;
   color: rgb(132,37,30);
+}
+
+.lrCol {
+  display: flex;
+}
+
+.lrCon {
+  max-width: 80%;
+  margin: 0 auto;
 }

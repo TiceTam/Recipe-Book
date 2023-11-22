@@ -17,7 +17,6 @@ function RecipePage(){
         { title: 'Alfredo Pasta', content: 'This is the content of Recipe 2.', imageSrc: '../images/displayDish1.jpeg'},
         { title: 'Chocolate Cake', content: 'This is the content of Recipe 3.', imageSrc: '../images/displayDish1.jpeg'},
         { title: 'Poke Bowl', content: 'This is the content of Recipe 4.', imageSrc: '../images/displayDish1.jpeg'},
-        { title: 'Fried Chicken', content: 'This is the content of Recipe 5.', imageSrc: '../images/displayDish1.jpeg'},
       ];
     
     return(
@@ -55,11 +54,11 @@ function RecipePage(){
             <div className='lrTextWrap'>
                 <h2 className='lrText'>Latest Recipes</h2>
             </div>
-            
-            <Container>
-                <Row xs={2} md={3} lg={5} className="g-4">
+
+            <Container className='lrCon'>
+                <Row xs={2} md={3} lg={4} className="g-4">
                 {latestRecipes.map((recipe, index) => (
-                    <Col key={index} className='d-flex'>
+                    <Col key={index} className='lrCol'>
                     <Card className='flex-fill'>
                         <Card.Img variant="top" src={displayDish1}/>
                         <Card.Body>

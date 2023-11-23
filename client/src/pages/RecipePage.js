@@ -120,7 +120,7 @@ function RecipePage(){
                                         centered>
 
                                         <Modal.Header>
-                                            <Modal.Title id="contained-modal-title-vcenter">INGREDIENTS AND INSTRUCTION</Modal.Title>
+                                            <Modal.Title id="contained-modal-title-vcenter">INGREDIENTS AND INSTRUCTIONS</Modal.Title>
                                         </Modal.Header>
 
                                         <Modal.Body>

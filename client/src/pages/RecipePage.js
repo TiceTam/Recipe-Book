@@ -18,7 +18,7 @@ function RecipePage(){
 
     const getRecipes = async () => {
 
-        const URL = "http://www.cop4331groupfifteen.xyz/api/loadrecipes";
+        const URL = "https://www.cop4331groupfifteen.xyz/api/loadrecipes";
 
         try{
             const response = await fetch(URL, {
@@ -55,7 +55,7 @@ function RecipePage(){
         console.log(userID);
         var recipeID = id;
 
-        const URL = "http://www.cop4331groupfifteen.xyz/api/addrecipelikes";
+        const URL = "https://www.cop4331groupfifteen.xyz/api/addrecipelikes";
         const body = JSON.stringify({userID: userID, recipeID: recipeID});
 
         try{

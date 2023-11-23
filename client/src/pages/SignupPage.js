@@ -19,7 +19,7 @@ export default class SignupPage extends Component{
     }
 	
 	onSubmit = async(event) => {
-		const URL = "http://localhost:3001/api/signup";
+		const URL = "http://www.cop4331groupfifteen.xyz/api/signup";
 
 		event.preventDefault();
 

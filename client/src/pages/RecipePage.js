@@ -15,11 +15,10 @@ function RecipePage(){
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState([]);
     const [openModal, setOpenModal] = useState();
-    const [heart, setHeart] = useState([]);
 
     const getRecipes = async () => {
 
-        const URL = "http://localhost:3001/api/loadrecipes";
+        const URL = "http://www.cop4331groupfifteen.xyz/api/loadrecipes";
 
         try{
             const response = await fetch(URL, {
@@ -56,7 +55,7 @@ function RecipePage(){
         console.log(userID);
         var recipeID = id;
 
-        const URL = "http://localhost:3001/api/addrecipelikes";
+        const URL = "http://www.cop4331groupfifteen.xyz/api/addrecipelikes";
         const body = JSON.stringify({userID: userID, recipeID: recipeID});
 
         try{

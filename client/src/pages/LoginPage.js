@@ -18,7 +18,7 @@ export default class LoginPage extends Component{
     }
 
     onSubmit = async(event) => {
-		const URL = "http://localhost:3001/api/login";
+		const URL = "http://www.cop4331groupfifteen.xyz/api/login";
 
 		event.preventDefault();
 
@@ -45,7 +45,7 @@ export default class LoginPage extends Component{
                 else if(response.status === 200){
                     json = await response.json();
                     window.location.href ="http://localhost:3000/recipe";
-					//window.location.href = "http://www.cop4331groupfifteen.xyz/user";
+					//window.location.href = "http://www.cop4331groupfifteen.xyz/recipe";
 				}
                 return json;
 			}).then(function(data){

@@ -16,7 +16,7 @@ function UserPage(){
 
     const getLikes = async () => {
 
-        const URL = "http://localhost:3001/api/loadlikes";
+        const URL = "http://www.cop4331groupfifteen.xyz/api/loadlikes";
         var userID = localStorage.getItem("usernameID");
         const body = JSON.stringify({userID: userID});
 
@@ -55,7 +55,7 @@ function UserPage(){
         console.log(userID);
         var recipeID = id;
 
-        const URL = "http://localhost:3001/api/deletelikes";
+        const URL = "http://www.cop4331groupfifteen.xyz/api/deletelikes";
         const body = JSON.stringify({userID: userID, recipeID: recipeID});
 
         try{

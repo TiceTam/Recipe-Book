@@ -15,6 +15,7 @@ function RecipePage(){
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState([]);
     const [openModal, setOpenModal] = useState();
+    const [heart, setHeart] = useState([]);
 
     const getRecipes = async () => {
 
@@ -47,6 +48,47 @@ function RecipePage(){
     useEffect(() => {
         getRecipes();
     }, []);
+
+    const onLike = async (e, id) =>{
+        e.stopPropagation();
+
+        var userID = localStorage.getItem("usernameID");
+        console.log(userID);
+        var recipeID = id;
+
+        const URL = "http://localhost:3001/api/addrecipelikes";
+        const body = JSON.stringify({userID: userID, recipeID: recipeID});
+
+        try{
+            await fetch(URL, {
+                method: "POST",
+                body: body,
+                headers: {
+                	'Content-Type': 'application/json'
+                },
+            }).then(
+                async(response) => {
+                    var warn = document.getElementById("errorMessage");
+
+                    if(response.status === 404){
+                        const json = await response.json();
+                        console.log(json);
+                        warn.style.color = "#FF0000";
+                        warn.innerHTML = "Like already exists :(";
+                        console.log("like already exists.");
+                    }
+                    else if(response.status === 200){
+                        const json = await response.json();
+                        console.log(json);
+                        warn.innerHTML = "You liked another amazing recipe :)";
+                        console.log("Successfully added to likes");
+                    }
+                }
+            )
+        } catch (error){
+            console.log(error);
+        };
+    }
     
     return(
         <div>
@@ -83,7 +125,7 @@ function RecipePage(){
             
             <div className='lrTextWrap'>
                 <div id="textSearch">
-                    <p className='lrText'>Latest Recipes
+                    <div className='lrText'>Latest Recipes
                         <Container className='mt-2'>
                             <Row>
                                 <Col sm={4}>
@@ -99,7 +141,8 @@ function RecipePage(){
                                 </Col>
                             </Row>
                         </Container>
-                    </p>
+                        <p id="errorMessage"></p>
+                    </div>
                 </div>
                 
             </div>
@@ -113,6 +156,9 @@ function RecipePage(){
                             <Card.Body>
                                 <Card.Title>{recipe.recipeName}</Card.Title>
                                 <Button variant="warning" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
+                                <Button className="btn btn-block btn-primary" onClick={(event) => onLike(event, recipe._id)}>
+                                    Like <i className="fas fa-thumbs-up"></i>
+                                </Button>        
                                     <Modal
                                         show={openModal === recipe._id}
                                         size="lg"

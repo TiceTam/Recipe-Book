@@ -138,7 +138,7 @@ app.post('/api/addrecipelikes', async(req, res)=>{
     const {userID, recipeID} = req.body;
     const existingLike = await Like.findOne({recipeID: recipeID, userID: userID});
     if(existingLike){
-        return res.status(200).json({err: "like already exists."});
+        return res.status(404).json({err: "like already exists."});
     }
     const like = new Like({
         recipeID,
@@ -178,7 +178,7 @@ app.post('/api/loadlikes', async (req, res)=>{
     for(const like of likes){
         let recipeID = like.recipeID;
         console.log(recipeID);
-        recipes[i] = await Recipe.find({_id: recipeID});
+        recipes[i] = await Recipe.findOne({_id: recipeID});
         i += 1;
     }
 
@@ -190,8 +190,10 @@ app.post('/api/loadlikes', async (req, res)=>{
 //Delete Likes
 app.post('/api/deletelikes', async (req, res) =>{
     const {userID, recipeID} = req.body;
+    console.log(userID, recipeID);
 
     await Like.deleteOne({userID: userID, recipeID: recipeID});
+    //console.log(userID, recipeID);
 
     return res.status(200).json({mess: "Successfully deleted like"});
 });

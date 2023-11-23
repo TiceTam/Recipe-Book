@@ -44,12 +44,13 @@ export default class LoginPage extends Component{
 				}
                 else if(response.status === 200){
                     json = await response.json();
-                    window.location.href ="http://localhost:3000/user";
+                    window.location.href ="http://localhost:3000/recipe";
 					//window.location.href = "http://www.cop4331groupfifteen.xyz/user";
 				}
                 return json;
 			}).then(function(data){
                 localStorage.setItem("usernameID", data.userID);
+                //console.log(localStorage.getItem("usernameID"));
             });
 		} catch(error){
 			console.log(error);
@@ -75,8 +76,8 @@ export default class LoginPage extends Component{
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
                         <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
-                        <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
-                        <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
+                        <Nav.Link as={Link} to="/login" className='login'>LOGIN</Nav.Link>
+                        <Nav.Link as={Link} to="/signup" className='signup'>SIGNUP</Nav.Link>
                         {/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
                     </Nav>
                     </Navbar.Collapse>

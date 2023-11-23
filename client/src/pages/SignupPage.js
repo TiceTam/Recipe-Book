@@ -72,8 +72,8 @@ export default class SignupPage extends Component{
 					<Navbar.Collapse id="basic-navbar-nav">
 					<Nav>
 					<Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
-					<Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
-					<Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
+            		<Nav.Link as={Link} to="/login" className='login'>LOGIN</Nav.Link>
+            		<Nav.Link as={Link} to="/signup" className='signup'>SIGNUP</Nav.Link>
 						{/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
 					</Nav>
 					</Navbar.Collapse>

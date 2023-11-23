@@ -81,7 +81,7 @@ function RecipePage(){
             */}
             
             <div className='lrTextWrap'>
-                <div id="textSearth">
+                <div id="textSearch">
                     <p className='lrText'>Latest Recipes
                         <Container className='mt-2'>
                             <Row>
@@ -93,7 +93,7 @@ function RecipePage(){
                                             className="me-2 rounded-pill"
                                             aria-label="Search"
                                         />
-                                        <Button className='rounded-pill' variant='outline-primary'>Search</Button>
+                                        <Button className='rounded-pill' variant='warning'>Search</Button>
                                     </Form>
                                 </Col>
                             </Row>
@@ -111,7 +111,7 @@ function RecipePage(){
                             <Card.Img variant="top" src={recipe.image} alt={recipe.recipeName}/>
                             <Card.Body>
                                 <Card.Title>{recipe.recipeName}</Card.Title>
-                                <Button variant="dark" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
+                                <Button variant="warning" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
                                     <Modal
                                         show={openModal === recipe._id}
                                         size="lg"
@@ -119,18 +119,18 @@ function RecipePage(){
                                         centered>
 
                                         <Modal.Header>
-                                            <Modal.Title id="contained-modal-title-vcenter">INGREDIENT AND INSTRUCTION</Modal.Title>
+                                            <Modal.Title id="contained-modal-title-vcenter">INGREDIENTS AND INSTRUCTION</Modal.Title>
                                         </Modal.Header>
 
                                         <Modal.Body>
-                                            <p className="ingredient">ingredient:</p>
+                                            <p className="ingredient">Ingredients:</p>
                                             {ingredients.map((ingredient) => (
-                                                <p>{ingredient.ingredient}</p>
+                                                <p>-{ingredient.ingredient}</p>
                                             ))}
 
-                                            <p className="instruction">instruction:</p>
+                                            <p className="instruction">Instructions:</p>
                                             {instructions.map((instruction) => (
-                                                <p>{instruction.instruction}</p>
+                                                <p>-{instruction.instruction}</p>
                                             ))}
                                         </Modal.Body>
 

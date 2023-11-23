@@ -138,7 +138,7 @@ app.post('/api/addrecipelikes', async(req, res)=>{
     const {userID, recipeID} = req.body;
     const existingLike = await Like.findOne({recipeID: recipeID, userID: userID});
     if(existingLike){
-        return res.status(200).json({err: "like already exists."});
+        return res.status(404).json({err: "like already exists."});
     }
     const like = new Like({
         recipeID,

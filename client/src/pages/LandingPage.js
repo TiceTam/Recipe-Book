@@ -21,6 +21,7 @@ function LandingPage() {
           <Nav>
             <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
             <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
+            <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
             {/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
           </Nav>
         </Navbar.Collapse>

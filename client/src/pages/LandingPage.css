@@ -43,6 +43,10 @@ body{
   margin-right: 2vw;
 }
 
+.recipes {
+  margin-right: 2vw;
+}
+
 .nav-link{
   font-family: "Roboto";
   font-weight: 500;
@@ -58,9 +62,9 @@ body{
 }
 
 .lpText {
-  font-family: "Roboto";
+  font-family: "Agbalumo";
   font-weight: 700;
-  font-size: 80px;
+  font-size: 5.5vw;
   text-align: center;
   color: rgb(132,37,30);
 }
@@ -83,7 +87,7 @@ body{
 */
 
 .gsButton {
-  font-family: "Roboto";
+  font-family: "Agbalumo";
   font-weight: 500;
   font-size: 1.5vw;
   width: 150%;

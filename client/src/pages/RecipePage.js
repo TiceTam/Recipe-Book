@@ -128,7 +128,12 @@ function RecipePage(){
         } catch (error){
             console.log(error);
         };
-    }   
+    }
+
+    const onLogout = async() => {
+        localStorage.removeItem("usernameID");
+        window.location.href = "http://localhost:3000"
+    }
 
     
     return(
@@ -144,7 +149,7 @@ function RecipePage(){
                     <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
                     <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
                     <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
-                    <Nav.Link as={Link} to="/" className='logout'>LOGOUT</Nav.Link>
+                    <Nav.Link className='logout' onClick={() => {onLogout()}}>LOGOUT</Nav.Link>
                     {/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
                 </Nav>
                 </Navbar.Collapse>

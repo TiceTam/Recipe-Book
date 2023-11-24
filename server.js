@@ -118,7 +118,7 @@ app.post('/api/searchrecipes', async(req, res)=>{
     if(results){
         console.log('recipes found: ');
         console.log(results);
-        return res.status(200).json({recipes: results});
+        return res.status(200).json({error: '', recipes: results});
       } else{
         console.log('recipes not found');
         return res.status(404).json({error: 'recipes not found'})

@@ -161,7 +161,9 @@ app.post('/api/searchlikes', async(req,res)=>{
     if (likes){
         for(let i = 0; i < likes.length; i++){
             let recipe = await Recipe.find({_id: likes[i].recipeID, recipeName: {$regex: recipeName, $options: 'i'}});
-            recipes.push(recipe);
+            if (recipe){
+                recipes.push(recipe);
+            }
         }
 
         return res.status(200).json({recipes: recipes});

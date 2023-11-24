@@ -132,7 +132,7 @@ function RecipePage(){
 
     const onLogout = async() => {
         localStorage.removeItem("usernameID");
-        window.location.href = "http://localhost:3000"
+        window.location.href = "https://www.cop4331groupfifteen.xyz"
     }
 
     

@@ -90,7 +90,7 @@ function UserPage(){
 
     const onLikeSearch = async() => {
 
-        const URL = "http://localhost:3001/api/searchlikes";
+        const URL = "https://www.cop4331groupfifteen.xyz/api/searchlikes";
         const userID = localStorage.getItem("usernameID");
         const body = JSON.stringify({userID: userID, recipeName: search});
 
@@ -123,7 +123,7 @@ function UserPage(){
         //console.log(localStorage.getItem("usernameID"));
         localStorage.removeItem("usernameID");
         //console.log(localStorage.getItem("usernameID"));
-        window.location.href = "http://localhost:3000"
+        window.location.href = "http://www.cop4331groupfifteen.xyz";
     }
 
 

@@ -193,15 +193,15 @@ function RecipePage(){
             </div>
 
             <Container className='lrCon'>
-                <Row xs={2} md={3} lg={4} className="g-4">
+                <Row xs={2} md={4} lg={4} className="g-4">
                     {recipes.map((recipe) => (
                         <Col className='lrCol'>
                         <Card className='flex-fill'>
                             <Card.Img variant="top" src={recipe.image} alt={recipe.recipeName}/>
                             <Card.Body>
                                 <Card.Title>{recipe.recipeName}</Card.Title>
-                                <Button variant="warning" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
-                                <Button className="btn btn-block btn-primary" onClick={(event) => onLike(event, recipe._id)}>
+                                <Button variant="warning" className="vrButton" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
+                                <Button variant="success" onClick={(event) => onLike(event, recipe._id)}>
                                     Like <i className="fas fa-thumbs-up"></i>
                                 </Button>        
                                     <Modal

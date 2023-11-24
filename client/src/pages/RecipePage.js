@@ -146,7 +146,6 @@ function RecipePage(){
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
-                    <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
                     <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
                     <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
                     <Nav.Link className='logout' onClick={() => {onLogout()}}>LOGOUT</Nav.Link>

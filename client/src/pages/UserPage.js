@@ -138,9 +138,9 @@ function UserPage(){
                             <Card.Img variant="top" src={like.image} alt={like.recipeName}/>
                             <Card.Body>
                                 <Card.Title>{like.recipeName}</Card.Title>
-                                <Button variant="warning" onClick={() => {setOpenModal(like._id); getIngredients(like.ingredients); getInstructions(like.instructions);}}>View Recipe</Button>
-                                <Button className="btn btn-block btn-primary" onClick={(event) => onDislike(event, like._id)}>
-                                    Dislike
+                                <Button variant="warning" className="vrButton" onClick={() => {setOpenModal(like._id); getIngredients(like.ingredients); getInstructions(like.instructions);}}>View Recipe</Button>
+                                <Button variant='success' onClick={(event) => onDislike(event, like._id)}>
+                                    Unlike
                                 </Button>        
                                     <Modal
                                         show={openModal === like._id}

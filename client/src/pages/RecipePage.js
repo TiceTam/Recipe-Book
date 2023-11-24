@@ -155,8 +155,8 @@ function RecipePage(){
                             <Card.Img variant="top" src={recipe.image} alt={recipe.recipeName}/>
                             <Card.Body>
                                 <Card.Title>{recipe.recipeName}</Card.Title>
-                                <Button variant="warning" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
-                                <Button className="btn btn-block btn-primary" onClick={(event) => onLike(event, recipe._id)}>
+                                <Button variant="warning" className="vrButton" onClick={() => {setOpenModal(recipe._id); getIngredients(recipe.ingredients); getInstructions(recipe.instructions);}}>View Recipe</Button>
+                                <Button variant="success" onClick={(event) => onLike(event, recipe._id)}>
                                     Like <i className="fas fa-thumbs-up"></i>
                                 </Button>        
                                     <Modal

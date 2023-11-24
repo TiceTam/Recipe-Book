@@ -89,3 +89,7 @@
   max-width: 80%;
   margin: 0 auto;
 }
+
+.vrButton {
+  margin-right: 1vw;
+}

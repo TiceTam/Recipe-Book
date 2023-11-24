@@ -148,7 +148,7 @@ function RecipePage(){
             </div>
 
             <Container className='lrCon'>
-                <Row xs={2} md={3} lg={4} className="g-4">
+                <Row xs={2} md={4} lg={4} className="g-4">
                     {recipes.map((recipe) => (
                         <Col key={recipe._id} className='lrCol'>
                         <Card className='flex-fill'>

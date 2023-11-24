@@ -96,6 +96,7 @@ function UserPage(){
                     <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
                     <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
                     <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
+                    <Nav.Link as={Link} to="/" className='logout'>LOGOUT</Nav.Link>
                     {/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
                 </Nav>
                 </Navbar.Collapse>

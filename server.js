@@ -118,7 +118,7 @@ app.post('/api/searchrecipes', async(req, res)=>{
     if(results){
         console.log('recipes found: ');
         console.log(results);
-        return res.status(200).json({error: '', recipes: results});
+        return res.status(200).json({recipes: results});
       } else{
         console.log('recipes not found');
         return res.status(404).json({error: 'recipes not found'})
@@ -160,7 +160,7 @@ app.post('/api/searchlikes', async(req,res)=>{
     //get recipes for likes
     if (likes){
         for(let i = 0; i < likes.length; i++){
-            let recipe = await Recipe.find({_id: likes[i].recipeID, recipeName: {$regex: recipeName, $options: 'i'}});
+            let recipe = await Recipe.findOne({_id: likes[i].recipeID, recipeName: {$regex: recipeName, $options: 'i'}});
             if (recipe){
                 recipes.push(recipe);
             }

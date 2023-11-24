@@ -13,6 +13,7 @@ function UserPage(){
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState([]);
     const [openModal, setOpenModal] = useState();
+    const [search, setSearch] = useState("");
 
     const getLikes = async () => {
 
@@ -83,6 +84,42 @@ function UserPage(){
         };
     }
 
+    const handleInput = (event) => {
+        setSearch(event.target.value);
+    }
+
+    const onLikeSearch = async() => {
+
+        const URL = "http://localhost:3001/api/searchlikes";
+        const userID = localStorage.getItem("usernameID");
+        const body = JSON.stringify({userID: userID, recipeName: search});
+
+        console.log(userID, search);
+        
+        try{
+            await fetch(URL, {
+                method: "POST",
+                body: body,
+                headers: {
+                	'Content-Type': 'application/json'
+                },
+            }).then(
+                async(response) => {
+
+                    if(response.status === 200){
+                        const json = await response.json();
+                        console.log(json.recipes);
+                        setLike(json.recipes);
+                    }
+                }
+            )
+        } catch (error){
+            console.log(error);
+        };
+
+    }
+
+
     return (
         <div>
             <Navbar expand="lg" className="navbar" sticky='top'>
@@ -96,6 +133,7 @@ function UserPage(){
                     <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
                     <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
                     <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
+                    <Nav.Link as={Link} to="/" className='logout'>LOGOUT</Nav.Link>
                     {/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
                 </Nav>
                 </Navbar.Collapse>
@@ -117,8 +155,11 @@ function UserPage(){
                                             placeholder="Search"
                                             className="me-2 rounded-pill"
                                             aria-label="Search"
+                                            id="mySearch"
+                                            value = {search}
+                                            onChange = {handleInput}
                                         />
-                                        <Button className='rounded-pill' variant='warning'>Search</Button>
+                                        <Button className='rounded-pill' variant='warning' onClick={() => {onLikeSearch()}}>Search</Button>
                                     </Form>
                                 </Col>
                             </Row>
@@ -137,9 +178,9 @@ function UserPage(){
                             <Card.Img variant="top" src={like.image} alt={like.recipeName}/>
                             <Card.Body>
                                 <Card.Title>{like.recipeName}</Card.Title>
-                                <Button variant="warning" onClick={() => {setOpenModal(like._id); getIngredients(like.ingredients); getInstructions(like.instructions);}}>View Recipe</Button>
-                                <Button className="btn btn-block btn-primary" onClick={(event) => onDislike(event, like._id)}>
-                                    Dislike
+                                <Button variant="warning" className="vrButton" onClick={() => {setOpenModal(like._id); getIngredients(like.ingredients); getInstructions(like.instructions);}}>View Recipe</Button>
+                                <Button variant='success' onClick={(event) => onDislike(event, like._id)}>
+                                    Unlike
                                 </Button>        
                                     <Modal
                                         show={openModal === like._id}

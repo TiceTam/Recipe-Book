@@ -15,6 +15,7 @@ function RecipePage(){
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState([]);
     const [openModal, setOpenModal] = useState();
+    const [search, setSearch] = useState("");
 
     const getRecipes = async () => {
 
@@ -88,6 +89,47 @@ function RecipePage(){
             console.log(error);
         };
     }
+
+    const handleInput = (event) => {
+        setSearch(event.target.value);
+    }
+
+    const onSearch = async() => {
+
+        const URL = "https://www.cop4331groupfifteen.xyz/api/searchrecipes";
+        const body = JSON.stringify({recipeName: search});
+
+        try{
+            await fetch(URL, {
+                method: "POST",
+                body: body,
+                headers: {
+                	'Content-Type': 'application/json'
+                },
+            }).then(
+                async(response) => {
+                    var warn = document.getElementById("errorMessage");
+
+                    if(response.status === 404){
+                        const json = await response.json();
+                        console.log(json);
+                        warn.style.color = "#FF0000";
+                        warn.innerHTML = "Recipes not found :(";
+                        console.log("Recipes not found");
+                    }
+                    else if(response.status === 200){
+                        const json = await response.json();
+                        console.log(json.recipes);
+                        setRecipes(json.recipes);
+                        console.log("recipes found");
+                    }
+                }
+            )
+        } catch (error){
+            console.log(error);
+        };
+    }   
+
     
     return(
         <div>
@@ -102,6 +144,7 @@ function RecipePage(){
                     <Nav.Link as={Link} to="/" className='home'>HOME</Nav.Link>
                     <Nav.Link as={Link} to="/recipe" className='recipes'>RECIPES</Nav.Link>
                     <Nav.Link as={Link} to="/user" className='likes'>LIKES</Nav.Link>
+                    <Nav.Link as={Link} to="/" className='logout'>LOGOUT</Nav.Link>
                     {/*<Nav.Link as={Link} to="/login">LOGIN</Nav.Link>*/}
                 </Nav>
                 </Navbar.Collapse>
@@ -134,8 +177,11 @@ function RecipePage(){
                                             placeholder="Search"
                                             className="me-2 rounded-pill"
                                             aria-label="Search"
+                                            id="mySearch"
+                                            value = {search}
+                                            onChange = {handleInput}
                                         />
-                                        <Button className='rounded-pill' variant='warning'>Search</Button>
+                                        <Button className='rounded-pill' variant='warning' onClick={() => {onSearch()}}>Search</Button>
                                     </Form>
                                 </Col>
                             </Row>
@@ -149,7 +195,7 @@ function RecipePage(){
             <Container className='lrCon'>
                 <Row xs={2} md={3} lg={4} className="g-4">
                     {recipes.map((recipe) => (
-                        <Col key={recipe._id} className='lrCol'>
+                        <Col className='lrCol'>
                         <Card className='flex-fill'>
                             <Card.Img variant="top" src={recipe.image} alt={recipe.recipeName}/>
                             <Card.Body>

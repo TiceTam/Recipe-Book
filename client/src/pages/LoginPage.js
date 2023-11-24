@@ -44,7 +44,7 @@ export default class LoginPage extends Component{
 				}
                 else if(response.status === 200){
                     json = await response.json();
-                    window.location.href ="http://localhost:3001/user";
+                    window.location.href ="http://localhost:3000/recipe";
 					//window.location.href = "https://www.cop4331groupfifteen.xyz/recipe";
 				}
                 return json;

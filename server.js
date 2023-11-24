@@ -158,12 +158,17 @@ app.post('/api/searchlikes', async(req,res)=>{
     let recipes = [];
 
     //get recipes for likes
-    for(let i = 0; i < likes.length; i++){
-        let recipe = await Recipe.find({_id: likes[i].recipeID, recipeName: {$regex: recipeName, $options: 'i'}});
-        recipes.push(recipe);
-    }
+    if (likes){
+        for(let i = 0; i < likes.length; i++){
+            let recipe = await Recipe.find({_id: likes[i].recipeID, recipeName: {$regex: recipeName, $options: 'i'}});
+            recipes.push(recipe);
+        }
 
-    return res.status(200).json({recipes: recipes});
+        return res.status(200).json({recipes: recipes});
+    }  
+    else{
+        return res.status(404).json({err: "No recipes found"});
+    } 
 
 });
 

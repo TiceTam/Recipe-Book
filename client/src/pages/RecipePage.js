@@ -231,7 +231,7 @@ function RecipePage(){
                                         </Modal.Body>
 
                                         <Modal.Footer>
-                                            <Button variant="warning" onClick={() => setOpenModal(false)}>Close</Button>
+                                            <Button variant="danger" onClick={() => setOpenModal(false)}>Close</Button>
                                         </Modal.Footer>
                                     </Modal>
                             </Card.Body>

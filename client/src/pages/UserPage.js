@@ -61,7 +61,7 @@ function UserPage(){
         var recipeID = id;
 
         const URL = "https://www.cop4331groupfifteen.xyz/api/deletelikes";
-        const body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
+        let body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
 
         try{
             await fetch(URL, {
@@ -85,6 +85,45 @@ function UserPage(){
             )
         } catch (error){
             console.log(error);
+            
+            const token = await fetch(buildPath('/api/token'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    refreshToken: refreshToken
+                }),
+            });
+
+            if (token){
+                localStorage.setItem("accessToken", token.accessToken);
+                accessToken = localStorage.getItem("accessToken");
+                body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
+                try{
+                    await fetch(URL, {
+                        method: "POST",
+                        body: body,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    }).then(
+                        async(response) => {
+                            var warn = document.getElementById("errorMessage");
+        
+                            if(response.status === 200){
+                                const json = await response.json();
+                                console.log(json);
+                                warn.innerHTML = "You successfully dislike this recipe :)";
+                                console.log("Successfully deleted like");
+                                getLikes();
+                            }
+                        }
+                    )
+                } catch (error){
+                    console.log(error);
+                }
+            }
         };
     }
 
@@ -98,7 +137,7 @@ function UserPage(){
         const userID = localStorage.getItem("usernameID");
         let accessToken = localStorage.getItem("accessToken");
         let refreshToken = localStorage.getItem("refreshToken");
-        const body = JSON.stringify({userID: userID, recipeName: search, accessToken: accessToken});
+        let body = JSON.stringify({userID: userID, recipeName: search, accessToken: accessToken});
 
         console.log(userID, search);
         
@@ -121,6 +160,42 @@ function UserPage(){
             )
         } catch (error){
             console.log(error);
+
+            const token = await fetch(buildPath('/api/token'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    refreshToken: refreshToken
+                }),
+            });
+
+            if (token){
+                localStorage.setItem("accessToken", token.accessToken);
+                accessToken = localStorage.getItem("accessToken");
+                body = JSON.stringify({userID: userID, recipeName: search, accessToken: accessToken});
+                try{
+                    await fetch(URL, {
+                        method: "POST",
+                        body: body,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    }).then(
+                        async(response) => {
+        
+                            if(response.status === 200){
+                                const json = await response.json();
+                                console.log(json.recipes);
+                                setLike(json.recipes);
+                            }
+                        }
+                    )
+                } catch (error){
+                    console.log(error);
+                }
+            }
         };
 
     }

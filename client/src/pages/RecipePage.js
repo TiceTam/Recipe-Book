@@ -60,7 +60,7 @@ function RecipePage(){
         var recipeID = id;
 
         const URL = "https://www.cop4331groupfifteen.xyz/api/addrecipelikes";
-        const body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
+        let body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
 
         try{
             await fetch(URL, {
@@ -90,6 +90,52 @@ function RecipePage(){
             )
         } catch (error){
             console.log(error);
+
+            const token = await fetch(buildPath('/api/token'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    refreshToken: refreshToken
+                }),
+            });
+
+            if (token){
+                localStorage.setItem("accessToken", token.accessToken);
+                accessToken = localStorage.getItem("accessToken");
+                body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
+                try{
+                    await fetch(URL, {
+                        method: "POST",
+                        body: body,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    }).then(
+                        async(response) => {
+                            var warn = document.getElementById("errorMessage");
+        
+                            if(response.status === 404){
+                                const json = await response.json();
+                                console.log(json);
+                                warn.style.color = "#FF0000";
+                                warn.innerHTML = "Like already exists :(";
+                                console.log("like already exists.");
+                            }
+                            else if(response.status === 200){
+                                const json = await response.json();
+                                console.log(json);
+                                warn.innerHTML = "You liked another amazing recipe :)";
+                                console.log("Successfully added to likes");
+                            }
+                        }
+                    )
+                } catch (error){
+                    console.log(error);
+                }
+            }
+
         };
     }
 

@@ -53,11 +53,14 @@ function RecipePage(){
         e.stopPropagation();
 
         var userID = localStorage.getItem("usernameID");
+        let accessToken = localStorage.getItem("accessToken");
+        let refreshToken = localStorage.getItem("refreshToken");
+
         console.log(userID);
         var recipeID = id;
 
         const URL = "https://www.cop4331groupfifteen.xyz/api/addrecipelikes";
-        const body = JSON.stringify({userID: userID, recipeID: recipeID});
+        const body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
 
         try{
             await fetch(URL, {

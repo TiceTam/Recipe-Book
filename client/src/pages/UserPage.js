@@ -21,7 +21,7 @@ function UserPage(){
         var userID = localStorage.getItem("usernameID");
         let accessToken = localStorage.getItem("accessToken");
         let refreshToken = localStorage.getItem("refreshToken");
-        const body = JSON.stringify({userID: userID});
+        const body = JSON.stringify({userID: userID, accessToken: accessToken});
 
         try{
             const response = await fetch(URL, {
@@ -55,11 +55,13 @@ function UserPage(){
         e.stopPropagation();
 
         var userID = localStorage.getItem("usernameID");
+        let accessToken = localStorage.getItem("accessToken");
+        let refreshToken = localStorage.getItem("refreshToken");
         console.log(userID);
         var recipeID = id;
 
         const URL = "https://www.cop4331groupfifteen.xyz/api/deletelikes";
-        const body = JSON.stringify({userID: userID, recipeID: recipeID});
+        const body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
 
         try{
             await fetch(URL, {
@@ -94,7 +96,9 @@ function UserPage(){
 
         const URL = "https://www.cop4331groupfifteen.xyz/api/searchlikes";
         const userID = localStorage.getItem("usernameID");
-        const body = JSON.stringify({userID: userID, recipeName: search});
+        let accessToken = localStorage.getItem("accessToken");
+        let refreshToken = localStorage.getItem("refreshToken");
+        const body = JSON.stringify({userID: userID, recipeName: search, accessToken: accessToken});
 
         console.log(userID, search);
         
@@ -124,6 +128,8 @@ function UserPage(){
     const onLogout = async() => {
         //console.log(localStorage.getItem("usernameID"));
         localStorage.removeItem("usernameID");
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
         //console.log(localStorage.getItem("usernameID"));
         window.location.href = "http://www.cop4331groupfifteen.xyz";
     }

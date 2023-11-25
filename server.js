@@ -5,9 +5,11 @@ const cors = require('cors');
 const User = require('./schema/usermodel');
 const Recipe = require('./schema/recipemodel');
 const Like = require('./schema/likemodel');
+const Token = require('./schema/tokenmodel');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const app = express();
+const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
@@ -40,6 +42,7 @@ app.post('/api/login', async (req, res) =>{
     
     
     const user = await User.findOne({ username });
+    const userObject = {name : username}; 
 
     if (!user) 
     {
@@ -53,11 +56,36 @@ app.post('/api/login', async (req, res) =>{
             return res.status(404).json({error: 'Password Invalid'});
         }
         else{
-            return res.status(200).json({userID: user._id});
+            const refreshToken = jwt.sign(userObject, process.env.REFRESH_TOKEN_SECRET);
+            
+            const token = new Token({
+                refreshToken
+            });
+        
+            await token.save();
+
+            const accessToken = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30m'});
+            return res.status(200).json({accessToken: accessToken, refreshToken: refreshToken, userID: user._id});
         }
     }
 
 });
+
+app.post('/api/token', async (req, res) => {
+    const refreshToken = req.body.refreshToken
+    if (refreshToken == null) return res.sendStatus(401)
+    const existingToken = await Token.findOne({refreshToken: refreshToken});
+    if (!existingToken) return res.sendStatus(403)
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err) return res.sendStatus(403)
+      const accessToken = generateAccessToken({ name: user.name })
+      res.json({ accessToken: accessToken })
+    })
+});
+
+function generateAccessToken(user) {
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m' })
+}
 
 //Registration
 app.post('/api/signup', async (req, res)=>{
@@ -134,7 +162,7 @@ app.post('/api/loadrecipes', async(req, res)=>{
 });
 
 //Add Recipe Like
-app.post('/api/addrecipelikes', async(req, res)=>{
+app.post('/api/addrecipelikes', authenticateToken, async(req, res)=>{
     const {userID, recipeID} = req.body;
     const existingLike = await Like.findOne({recipeID: recipeID, userID: userID});
     if(existingLike){
@@ -152,7 +180,7 @@ app.post('/api/addrecipelikes', async(req, res)=>{
 
 
 //Search Recipe likes
-app.post('/api/searchlikes', async(req,res)=>{
+app.post('/api/searchlikes', authenticateToken, async(req,res)=>{
     const {userID, recipeName} = req.body;
     const likes = await Like.find({userID: userID});
     let recipes = [];
@@ -176,7 +204,7 @@ app.post('/api/searchlikes', async(req,res)=>{
 
 
 //Load Recipe Likes
-app.post('/api/loadlikes', async (req, res)=>{
+app.post('/api/loadlikes', authenticateToken, async (req, res)=>{
     const {userID} = req.body;
     const likes = await Like.find({userID: userID});
     let recipes = [];
@@ -195,7 +223,7 @@ app.post('/api/loadlikes', async (req, res)=>{
 });
 
 //Delete Likes
-app.post('/api/deletelikes', async (req, res) =>{
+app.post('/api/deletelikes', authenticateToken, async (req, res) =>{
     const {userID, recipeID} = req.body;
     console.log(userID, recipeID);
 
@@ -204,6 +232,18 @@ app.post('/api/deletelikes', async (req, res) =>{
 
     return res.status(200).json({mess: "Successfully deleted like"});
 });
+
+function authenticateToken(req, res, next){
+    const token = req.body.accessToken;
+
+    if (token == null) return res.sendStatus(401);
+    
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user)=>{
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+}
 
 
 app.listen(port, () => {

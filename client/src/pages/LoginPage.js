@@ -50,6 +50,10 @@ export default class LoginPage extends Component{
                 return json;
 			}).then(function(data){
                 localStorage.setItem("usernameID", data.userID);
+                localStorage.setItem("accessToken", data.accessToken);
+                localStorage.setItem("refreshToken", data.refreshToken);
+                //console.log(localStorage.getItem("accessToken"));
+                //console.log(localStorage.getItem("refreshToken"));
                 //console.log(localStorage.getItem("usernameID"));
             });
 		} catch(error){

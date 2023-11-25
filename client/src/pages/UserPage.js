@@ -19,6 +19,8 @@ function UserPage(){
 
         const URL = "https://www.cop4331groupfifteen.xyz/api/loadlikes";
         var userID = localStorage.getItem("usernameID");
+        let accessToken = localStorage.getItem("accessToken");
+        let refreshToken = localStorage.getItem("refreshToken");
         const body = JSON.stringify({userID: userID});
 
         try{

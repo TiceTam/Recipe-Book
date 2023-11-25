@@ -91,7 +91,7 @@ function RecipePage(){
         } catch (error){
             console.log(error);
 
-            const token = await fetch(buildPath('/api/token'), {
+            const token = await fetch('https://www.cop4331groupfifteen.xyz/api/token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

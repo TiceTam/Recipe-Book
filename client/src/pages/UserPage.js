@@ -296,7 +296,7 @@ function UserPage(){
                     {likedRecipe.map((like) => (
                         <Col className='lrCol'>
                         <Card className='flex-fill'>
-                            <Card.Img variant="top" src={like.image} alt={like.recipeName}/>
+                            {/*<Card.Img variant="top" src={like.image} alt={like.recipeName}/>*/}
                             <Card.Body>
                                 <Card.Title>{like.recipeName}</Card.Title>
                                 <Button variant="warning" className="vrButton" onClick={() => {setOpenModal(like._id); getIngredients(like.ingredients); getInstructions(like.instructions);}}>View Recipe</Button>

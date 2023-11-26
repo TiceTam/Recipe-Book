@@ -36,6 +36,36 @@ function UserPage(){
             setLike(data.recipes); 
         } catch(error){
             console.log(error);
+
+            const token = await fetch('https://www.cop4331groupfifteen.xyz/api/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    refreshToken: refreshToken
+                }),
+            });
+            console.log(token);
+            if (token){
+                localStorage.setItem("accessToken", token.accessToken);
+                accessToken = localStorage.getItem("accessToken");
+                body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
+                try{
+                    const response = await fetch(URL, {
+                        method: 'POST',
+                        body: body,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    });
+                    const data = await response.json();
+                    //console.log(data);
+                    setLike(data.recipes); 
+                } catch(error){
+                    console.log(error);
+                }
+            }
         }
     }
 
@@ -95,7 +125,7 @@ function UserPage(){
                     refreshToken: refreshToken
                 }),
             });
-
+            console.log(token);
             if (token){
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");
@@ -170,7 +200,7 @@ function UserPage(){
                     refreshToken: refreshToken
                 }),
             });
-
+            console.log(token);
             if (token){
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");

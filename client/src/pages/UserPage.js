@@ -46,7 +46,7 @@ function UserPage(){
                     refreshToken: refreshToken
                 }),
             });
-            console.log(token);
+            console.log(token.accessToken);
             
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");

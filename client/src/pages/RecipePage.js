@@ -90,7 +90,7 @@ function RecipePage(){
             )
         } catch (error){
             console.log(error);
-
+            location.reload();
             const token = await fetch('https://www.cop4331groupfifteen.xyz/api/token', {
                 method: 'POST',
                 headers: {

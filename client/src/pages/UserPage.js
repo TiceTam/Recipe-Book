@@ -36,7 +36,7 @@ function UserPage(){
             setLike(data.recipes); 
         } catch(error){
             console.log(error);
-
+            location.reload();
             const token = await fetch('https://www.cop4331groupfifteen.xyz/api/token', {
                 method: 'POST',
                 headers: {
@@ -115,7 +115,7 @@ function UserPage(){
             )
         } catch (error){
             console.log(error);
-            
+            location.reload();
             const token = await fetch('https://www.cop4331groupfifteen.xyz/api/token', {
                 method: 'POST',
                 headers: {
@@ -192,7 +192,7 @@ function UserPage(){
             )
         } catch (error){
             console.log(error);
-
+            location.reload();
             const token = await fetch('https://www.cop4331groupfifteen.xyz/api/token', {
                 method: 'POST',
                 headers: {

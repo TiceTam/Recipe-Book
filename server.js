@@ -64,7 +64,7 @@ app.post('/api/login', async (req, res) =>{
         
             await token.save();
 
-            const accessToken = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'});
+            const accessToken = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30m'});
             return res.status(200).json({accessToken: accessToken, refreshToken: refreshToken, userID: user._id});
         }
     }

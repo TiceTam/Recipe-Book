@@ -46,9 +46,10 @@ function UserPage(){
                     refreshToken: refreshToken
                 }),
             });
-            console.log(token.accessToken);
+            let res = JSON.parse(await token.text());
+            console.log(res.accessToken);
             
-                localStorage.setItem("accessToken", token.accessToken);
+                localStorage.setItem("accessToken", res.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 const body = JSON.stringify({userID: userID, accessToken: accessToken});
                 try{
@@ -124,9 +125,11 @@ function UserPage(){
                     refreshToken: refreshToken
                 }),
             });
-            console.log(token);
+            let res = JSON.parse(await token.text());
+            console.log(res.accessToken);
+           
             
-                localStorage.setItem("accessToken", token.accessToken);
+                localStorage.setItem("accessToken", res.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
                 try{
@@ -199,9 +202,10 @@ function UserPage(){
                     refreshToken: refreshToken
                 }),
             });
-            console.log(token);
+            let res = JSON.parse(await token.text());
+            console.log(res.accessToken);
             
-                localStorage.setItem("accessToken", token.accessToken);
+                localStorage.setItem("accessToken", res.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 body = JSON.stringify({userID: userID, recipeName: search, accessToken: accessToken});
                 try{

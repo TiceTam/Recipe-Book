@@ -100,9 +100,10 @@ function RecipePage(){
                     refreshToken: refreshToken
                 }),
             });
-
+            let res = JSON.parse(await token.text());
+            console.log(res.accessToken);
             
-                localStorage.setItem("accessToken", token.accessToken);
+                localStorage.setItem("accessToken", res.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
                 try{

@@ -15,6 +15,7 @@ body{
   display: flex;
   align-items: center;
   background-color: rgb(255, 251, 251);
+  z-index: 1;
 }
 
 .navBrand {

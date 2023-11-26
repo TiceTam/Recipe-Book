@@ -50,7 +50,7 @@ function UserPage(){
             if (token){
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");
-                body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
+                const body = JSON.stringify({userID: userID, accessToken: accessToken});
                 try{
                     const response = await fetch(URL, {
                         method: 'POST',

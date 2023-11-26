@@ -47,7 +47,7 @@ function UserPage(){
                 }),
             });
             console.log(token);
-            if (token){
+            
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 const body = JSON.stringify({userID: userID, accessToken: accessToken});
@@ -65,7 +65,6 @@ function UserPage(){
                 } catch(error){
                     console.log(error);
                 }
-            }
         }
     }
 
@@ -126,7 +125,7 @@ function UserPage(){
                 }),
             });
             console.log(token);
-            if (token){
+            
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
@@ -153,7 +152,7 @@ function UserPage(){
                 } catch (error){
                     console.log(error);
                 }
-            }
+            
         };
     }
 
@@ -201,7 +200,7 @@ function UserPage(){
                 }),
             });
             console.log(token);
-            if (token){
+            
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 body = JSON.stringify({userID: userID, recipeName: search, accessToken: accessToken});
@@ -225,7 +224,7 @@ function UserPage(){
                 } catch (error){
                     console.log(error);
                 }
-            }
+            
         };
 
     }

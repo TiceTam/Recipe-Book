@@ -101,7 +101,7 @@ function RecipePage(){
                 }),
             });
 
-            if (token){
+            
                 localStorage.setItem("accessToken", token.accessToken);
                 accessToken = localStorage.getItem("accessToken");
                 body = JSON.stringify({userID: userID, recipeID: recipeID, accessToken: accessToken});
@@ -134,7 +134,6 @@ function RecipePage(){
                 } catch (error){
                     console.log(error);
                 }
-            }
 
         };
     }
